@@ -56,20 +56,32 @@ while carryOn:
     screen.fill(WHITE)
 
     # Queue different shapes and lines to be drawn
-    pygame.draw.rect(screen, PALE, [10, 80, 380, 380], 0)
-    pygame.draw.rect(screen, BROWN, [10, 10, 380, 100], 0)
-    pygame.draw.rect(screen, BLACK, [340, 40, 40,40],0)
-    pygame.draw.rect(screen, BLUE, [100, 20, 20, 90], 0)
-    pygame.draw.rect(screen, GWEEN, [80, 20, 20, 90], 0)
-    pygame.draw.rect(screen, YELLOW, [60, 20, 20, 90],0)
-    pygame.draw.rect(screen, WED, [40, 20,20,90], 0)
-    pygame.draw.rect(screen, MIDBLACK, [40, 100, 80, 30] , 0)
-    pygame.draw.ellipse(screen, MIDBLACK, [130, 150, 150, 150],0)
-    pygame.draw.ellipse(screen, BLACK,[125, 145, 160,160], 20)
+    pygame.draw.rect(screen, PALE, [10, 80, 380, 300], 0) #this is the lower bit of the camera
+    pygame.draw.rect(screen, BROWN, [10, 10, 380, 100], 0) #this is the top brown bit of the camera
+
+    #right camera curve
+    pygame.draw.rect(screen, WHITE, [365, 10, 50, 50], 0)
+    pygame.draw.ellipse(screen, BROWN, [340,10,50,50],0)
+    pygame.draw.rect(screen, BROWN, [340,39,50,50],0)
+
+    #left camera curve (don't ask why this one needed more) 
+    pygame.draw.rect(screen, WHITE, [10, 10, 50, 50], 0)
+    pygame.draw.ellipse(screen, BROWN, [10,10,50,50],0)
+    pygame.draw.rect(screen, BROWN, [10,39,50,50],0)
+    pygame.draw.rect(screen, BROWN, [30,10,50,10],0)
+
+    
+    pygame.draw.rect(screen, BLACK, [325, 45, 55,55],0) #this is the bit where the flash would come out of
+    pygame.draw.rect(screen, BLUE, [100, 20, 20, 90], 0) #blue stripe
+    pygame.draw.rect(screen, GWEEN, [80, 20, 20, 90], 0) #green stripe
+    pygame.draw.rect(screen, YELLOW, [60, 20, 20, 90],0) #yellow stripe
+    pygame.draw.rect(screen, WED, [40, 20,20,90], 0) #red stripe
+    pygame.draw.rect(screen, MIDBLACK, [40, 100, 80, 30] , 0) #all the stripes touch this bit
+    pygame.draw.ellipse(screen, MIDBLACK, [130, 150, 150, 150],0) #apature
+    pygame.draw.ellipse(screen, BLACK,[125, 145, 160,160], 20) #outter bit of the aperture. I really don't know camera part names...
     pygame.draw.ellipse(screen, GRAY,[115, 135, 180,180], 15)
-    # pygame.draw.rect(screen, RED, [55, 200, 100, 70], 0)
-    # pygame.draw.line(screen, GREEN, [0, 0], [100, 100], 5)
-    # pygame.draw.ellipse(screen, BLACK, [20, 20, 250, 100], 2)
+    
+    
 
     # Update the screen with queued shapes
     pygame.display.flip()
