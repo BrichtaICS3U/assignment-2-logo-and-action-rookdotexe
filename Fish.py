@@ -14,7 +14,7 @@ class Fish(pygame.sprite.Sprite):
         self.height = height
         self.color = color
         self.speed = speed
-
+        
         #pygame.draw.rect(self.image,color, [0,0,width,height])
         fishes = ["fishy.png", "tigerfish.png", "glawb.png"]
         self.image = pygame.image.load(random.choice(fishes))
