@@ -1,6 +1,6 @@
 # ICS3U
 # Assignment 2: Logo
-# <your name>
+# <Ahmed Abdulwahab>
 
 # adapted from http://www.101computing.net/getting-started-with-pygame/
 
@@ -16,7 +16,7 @@ WHITE = (255, 255, 255)
 GWEEN = (129, 210, 169)
 RED = (255, 0, 0)
 BROWN = (106, 69, 60)
-PALE = (231, 221, 209)
+PALE = (235, 225, 220)
 BLUE = (71, 155, 251)
 DARK = (61, 58, 53) 
 MIDBLACK = (52, 52, 52) 
@@ -25,14 +25,14 @@ WED = (253, 59, 96)
 GRAY = (182, 172, 170)
 
 # Set the screen size (please don't change this)
-SCREENWIDTH = 400
+SCREENWIDTH = 399 #i am rebel man
 SCREENHEIGHT = 400
 
 # Open a new window
 # The window is defined as (width, height), measured in pixels
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("My Logo")
+pygame.display.set_caption("Old IG logo")
 
 # This loop will continue until the user exits the game
 carryOn = True
@@ -63,13 +63,12 @@ while carryOn:
     pygame.draw.rect(screen, WHITE, [365, 10, 50, 50], 0)
     pygame.draw.ellipse(screen, BROWN, [340,10,50,50],0)
     pygame.draw.rect(screen, BROWN, [340,39,50,50],0)
-
-    #left camera curve (don't ask why this one needed more) 
+    
+    #left camera curve 
     pygame.draw.rect(screen, WHITE, [10, 10, 50, 50], 0)
     pygame.draw.ellipse(screen, BROWN, [10,10,50,50],0)
     pygame.draw.rect(screen, BROWN, [10,39,50,50],0)
     pygame.draw.rect(screen, BROWN, [30,10,50,10],0)
-
     
     pygame.draw.rect(screen, BLACK, [325, 45, 55,55],0) #this is the bit where the flash would come out of
     pygame.draw.rect(screen, BLUE, [100, 20, 20, 90], 0) #blue stripe
