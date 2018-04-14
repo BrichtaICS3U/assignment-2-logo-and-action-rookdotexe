@@ -7,7 +7,7 @@
 # Import the pygame library and initialise the game engine
 # Don't forget to import your class
 import pygame, random
-from Fish import Fish #i didn;t
+from Fish import Fish 
 pygame.init()
 
 # Define some colours
@@ -25,7 +25,7 @@ colorList = (RED, GREEN, BLUE)
 background = pygame.image.load("background.png") #i made this
 fishes = ["fishy.png", "tigerfish.png", "glawb.png"] #i made these as well
 pygame.mixer.pre_init(frequency = 44100, size = -16, channels = 2, buffer = 4096)
-pygame.mixer.music.load("underwater.mp3")
+pygame.mixer.music.load("underwater.mp3") #https://www.youtube.com/watch?v=yW2rmkg8c70&t=4s
 pygame.mixer.music.play(-1) 
 
 
@@ -42,7 +42,7 @@ all_sprites_list = pygame.sprite.Group()
 moveing_fish = pygame.sprite.Group()
 
 
-#Defineing all my classes
+#Defineing all my objects
 fish1 = Fish(RED, 80,60, random.randint(50,100))
 fish1.rect.x = 400
 fish1.rect.y = 400
@@ -63,7 +63,7 @@ moveing_fish.add(fish1)
 moveing_fish.add(fish2)
 moveing_fish.add(fish3)
 
-
+#clock stuff
 carryOn = True
 clock = pygame.time.Clock()
 
@@ -74,22 +74,27 @@ while carryOn:
         if event.type == pygame.QUIT: # Player clicked close button
             carryOn = False
         if event.type == pygame.KEYDOWN:
-            carryOn = False 
-        """if event.type == pygame.MOUSEMOTION:
-            x,y = event.pos
-            for srite in moveing_fish:
-                if Fish.image.collidepoint(x,y):
-                    Fish.image = pygame.transform.flip(Fish.image, True, False)"""
+            if event.key == pygame.K_SPACE: #big money
+                carryOn = False
+
+
     # --- Main logic
     all_sprites_list.update()
     for Fish in moveing_fish:
         Fish.moveRight(speed)
-        if Fish.rect.x > SCREENWIDTH or Fish.rect.x < -80:
+        if Fish.rect.x > SCREENWIDTH: #flips the sprite when it reachs the end of the screen. 
+            Fish.speed *= -1          #ran into a bug because I did the same flip on both sides.
+            Fish.rect.y = random.randint(50,SCREENHEIGHT)
+            Fish.image = pygame.transform.flip(Fish.image, True, False) 
             Fish.image = pygame.image.load(random.choice(fishes))
             Fish.image = pygame.transform.flip(Fish.image, True, False)
+        elif Fish.rect.x < -80:
             Fish.speed *= -1
             Fish.rect.y = random.randint(50,SCREENHEIGHT)
-        if pygame.mouse.get_pressed()[0]:
+            Fish.image = pygame.transform.flip(Fish.image, True, False)
+            Fish.image = pygame.image.load(random.choice(fishes))
+
+        if pygame.mouse.get_pressed()[0]: #can drag fish around. Added this for fun 
          mousex,mousey = event.pos
          if Fish.rect.collidepoint(mousex,mousey):
              Fish.rect.x=mousex-Fish.rect.width/2
