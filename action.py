@@ -19,7 +19,7 @@ GREEN = (0, 255, 0)
 BLUE = (0,0,255)
 WATER = (138, 178, 242)
     
-
+#initializing stuff and importing assets 
 speed = 1
 colorList = (RED, GREEN, BLUE)
 background = pygame.image.load("background.png") #i made this
@@ -56,12 +56,8 @@ fish1.rect.x = 200
 fish1.rect.y = 300
 
 #putting the classes in lists to make it easier to move them
-all_sprites_list.add(fish1)
-all_sprites_list.add(fish2)
-all_sprites_list.add(fish3)
-moveing_fish.add(fish1)
-moveing_fish.add(fish2)
-moveing_fish.add(fish3)
+all_sprites_list.add(fish1, fish2, fish3)
+moveing_fish.add(fish1, fish2, fish3)
 
 #clock stuff
 carryOn = True
@@ -74,13 +70,13 @@ while carryOn:
         if event.type == pygame.QUIT: # Player clicked close button
             carryOn = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE: #big money
+            if event.key == pygame.K_SPACE: #exit on space press 
                 carryOn = False
 
 
     # --- Main logic
     all_sprites_list.update()
-    for Fish in moveing_fish:
+    for Fish in moveing_fish:#goes through my list of objects and moves them
         Fish.moveRight(speed)
         if Fish.rect.x > SCREENWIDTH: #flips the sprite when it reachs the end of the screen. 
             Fish.speed *= -1          #ran into a bug because I did the same flip on both sides.
@@ -101,12 +97,12 @@ while carryOn:
              Fish.rect.y=mousey-Fish.rect.height/2
                 
     # --- Draw code goes here
-    screen.fill(WATER)
     screen.blit(background, (0,0))
     all_sprites_list.draw(screen)
     pygame.display.flip()
- 
+
     # --- Frame rate=
     clock.tick(60)
     
-pygame.quit()
+pygame.quit()#big money 
+    

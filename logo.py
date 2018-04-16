@@ -59,12 +59,23 @@ while carryOn:
     pygame.draw.rect(screen, PALE, [10, 80, 380, 300], 0) #this is the lower bit of the camera
     pygame.draw.rect(screen, BROWN, [10, 10, 380, 100], 0) #this is the top brown bit of the camera
 
-    #right camera curve
+    #top right camera curve
     pygame.draw.rect(screen, WHITE, [365, 10, 50, 50], 0)
     pygame.draw.ellipse(screen, BROWN, [340,10,50,50],0)
     pygame.draw.rect(screen, BROWN, [340,39,50,50],0)
+
+    #bottom right camera curve
+    pygame.draw.rect(screen, WHITE, [365, 330, 50, 50], 0)
+    pygame.draw.rect(screen, PALE, [340,300,50,50],0)
+    pygame.draw.ellipse(screen, PALE, [340,330,50,50],0)
+
+    #bottom left camera curve
+    pygame.draw.rect(screen, WHITE, [10, 330, 50, 50], 0)
+    pygame.draw.rect(screen, PALE, [10,299,50,50],0)
+    pygame.draw.rect(screen, PALE, [32,330,50,50],0)
+    pygame.draw.ellipse(screen, PALE, [10,330,50,50],0)
     
-    #left camera curve 
+    #top left camera curve 
     pygame.draw.rect(screen, WHITE, [10, 10, 50, 50], 0)
     pygame.draw.ellipse(screen, BROWN, [10,10,50,50],0)
     pygame.draw.rect(screen, BROWN, [10,39,50,50],0)
