@@ -23,6 +23,7 @@ BUBBLE = (219, 246, 255)
 
 #initializing stuff and importing assets 
 speed = 1
+bspeed = 1 
 radius = 1
 colorList = (RED, GREEN, BLUE)
 background = pygame.image.load("background.png") #i made this
@@ -54,15 +55,12 @@ for j in range(10):
     moveing_fish.add(tempFish)
     all_sprites_list.add(tempFish)
 
-
-for i in range(10):
-    tempBubble = Bubble(BUBBLE, random.randint(10,50), random.randint(20,50))
+for i in range(15):
+    tempBubble = Bubble(BUBBLE, random.randint(10,50), random.randint(10,50))
     tempBubble.rect.x = random.randint(0,700)
-    tempBubble.rect.y = random.randint(100,700)
+    tempBubble.rect.y = random.randint(0,700)
     moveing_bubble.add(tempBubble)
     all_sprites_list.add(tempBubble)
-
-
 
 #clock stuff
 carryOn = True
@@ -82,11 +80,11 @@ while carryOn:
     # --- Main logic
     all_sprites_list.update()
     for Bubble in moveing_bubble:
-        Bubble.Float(speed)
+        Bubble.Float(bspeed)
         #Bubble.Fade(radius)
         if Bubble.rect.y < (0 - Bubble.rect.height):
             Bubble.rect.y = 700
-            Bubble.rect.x = random.randint(100,800)
+            Bubble.rect.x = random.randint(0,780)   
     for Fish in moveing_fish:#goes through my list of objects and moves them
         Fish.moveRight(speed)
         if Fish.rect.x > SCREENWIDTH: #flips the sprite when it reachs the end of the screen. 
@@ -100,7 +98,6 @@ while carryOn:
             Fish.rect.y = random.randint(50,SCREENHEIGHT)
             Fish.image = pygame.transform.flip(Fish.image, True, False)
             Fish.image = pygame.image.load(random.choice(fishes))
-
         if pygame.mouse.get_pressed()[0]: #can drag fish around. Added this for fun 
          mousex,mousey = event.pos
          if Fish.rect.collidepoint(mousex,mousey):

@@ -15,4 +15,4 @@ class Bubble(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def Float(self, speed):
-        self.rect.y -= speed 
+        self.rect.y -= self.speed * speed / 20
