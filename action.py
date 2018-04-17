@@ -19,7 +19,8 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0) 
 BLUE = (0,0,255)
 WATER = (138, 178, 242)
-    
+BUBBLE = (219, 246, 255)
+
 #initializing stuff and importing assets 
 speed = 1
 radius = 1
@@ -39,7 +40,7 @@ SCREENHEIGHT = 800
 # The window is defined as (width, height), measured in pixels
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Fistfull of Fish")
+pygame.display.set_caption("Fistfull of Fish")#Featuring: Fish Westwater 
 all_sprites_list = pygame.sprite.Group()
 moveing_fish = pygame.sprite.Group()
 moveing_bubble = pygame.sprite.Group()
@@ -55,7 +56,7 @@ for j in range(10):
 
 
 for i in range(10):
-    tempBubble = Bubble(RED, random.randint(10,50), random.randint(20,50))
+    tempBubble = Bubble(BUBBLE, random.randint(10,50), random.randint(20,50))
     tempBubble.rect.x = random.randint(0,700)
     tempBubble.rect.y = random.randint(100,700)
     moveing_bubble.add(tempBubble)
