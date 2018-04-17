@@ -7,7 +7,8 @@
 # Import the pygame library and initialise the game engine
 # Don't forget to import your class
 import pygame, random
-from Fish import Fish 
+from Fish import Fish
+from Bubble import Bubble
 pygame.init()
 
 # Define some colours
@@ -21,6 +22,7 @@ WATER = (138, 178, 242)
     
 #initializing stuff and importing assets 
 speed = 1
+radius = 1
 colorList = (RED, GREEN, BLUE)
 background = pygame.image.load("background.png") #i made this
 fishes = ["fishy.png", "tigerfish.png", "glawb.png"] #i made these as well
@@ -40,24 +42,26 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Fish Tank")
 all_sprites_list = pygame.sprite.Group()
 moveing_fish = pygame.sprite.Group()
+moveing_bubble = pygame.sprite.Group()
+
+#Defineing all my objects in a loop.
+#Got the idea from Cade 
+for j in range(10):
+    tempFish = Fish(RED, 80,60, random.randint(50,100))
+    tempFish.rect.x = random.randint(100,700)
+    tempFish.rect.y = random.randint(100,700)
+    moveing_fish.add(tempFish)
+    all_sprites_list.add(tempFish)
 
 
-#Defineing all my objects
-fish1 = Fish(RED, 80,60, random.randint(50,100))
-fish1.rect.x = 400
-fish1.rect.y = 400
+for i in range(10):
+    tempBubble = Bubble(RED, random.randint(10,50), random.randint(20,50))
+    tempBubble.rect.x = random.randint(100,700)
+    tempBubble.rect.y = random.randint(100,700)
+    moveing_bubble.add(tempBubble)
+    all_sprites_list.add(tempBubble)
 
-fish2 = Fish(GREEN, 80,60, random.randint(50,100))
-fish1.rect.x = 300
-fish1.rect.y = 200
 
-fish3 = Fish(BLUE, 80,60, random.randint(50,100))
-fish1.rect.x = 200
-fish1.rect.y = 300
-
-#putting the classes in lists to make it easier to move them
-all_sprites_list.add(fish1, fish2, fish3)
-moveing_fish.add(fish1, fish2, fish3)
 
 #clock stuff
 carryOn = True
@@ -76,6 +80,12 @@ while carryOn:
 
     # --- Main logic
     all_sprites_list.update()
+    for Bubble in moveing_bubble:
+        Bubble.Float(speed)
+        #Bubble.Fade(radius)
+        if Bubble.rect.y < (0 - Bubble.rect.height):
+            Bubble.rect.y = 700
+            Bubble.rect.x = random.randint(100,800)
     for Fish in moveing_fish:#goes through my list of objects and moves them
         Fish.moveRight(speed)
         if Fish.rect.x > SCREENWIDTH: #flips the sprite when it reachs the end of the screen. 
@@ -99,6 +109,7 @@ while carryOn:
     # --- Draw code goes here
     screen.blit(background, (0,0))
     all_sprites_list.draw(screen)
+    #bubble1.draw(screen)
     pygame.display.flip()
 
     # --- Frame rate=

@@ -9,6 +9,9 @@ import pygame
 import math  
 pygame.init()
 
+#original logo:
+#https://officechai.com/news/instagram-new-logo/ (the one on the left)
+
 # Define some colours
 # Colours are defined using RGB values
 BLACK = (0, 0, 0)
@@ -87,6 +90,7 @@ while carryOn:
     pygame.draw.rect(screen, YELLOW, [60, 20, 20, 90],0) #yellow stripe
     pygame.draw.rect(screen, WED, [40, 20,20,90], 0) #red stripe
     pygame.draw.rect(screen, MIDBLACK, [40, 100, 80, 30] , 0) #all the stripes touch this bit
+
     pygame.draw.ellipse(screen, MIDBLACK, [130, 150, 150, 150],0) #apature
     pygame.draw.ellipse(screen, BLACK,[125, 145, 160,160], 20) #outter bit of the aperture. I really don't know camera part names...
     pygame.draw.ellipse(screen, GRAY,[115, 135, 180,180], 15)
