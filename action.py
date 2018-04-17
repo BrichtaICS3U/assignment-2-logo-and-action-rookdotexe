@@ -39,7 +39,7 @@ SCREENHEIGHT = 800
 # The window is defined as (width, height), measured in pixels
 size = (SCREENWIDTH, SCREENHEIGHT)
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Fish Tank")
+pygame.display.set_caption("Fistfull of Fish")
 all_sprites_list = pygame.sprite.Group()
 moveing_fish = pygame.sprite.Group()
 moveing_bubble = pygame.sprite.Group()
@@ -56,7 +56,7 @@ for j in range(10):
 
 for i in range(10):
     tempBubble = Bubble(RED, random.randint(10,50), random.randint(20,50))
-    tempBubble.rect.x = random.randint(100,700)
+    tempBubble.rect.x = random.randint(0,700)
     tempBubble.rect.y = random.randint(100,700)
     moveing_bubble.add(tempBubble)
     all_sprites_list.add(tempBubble)
