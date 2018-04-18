@@ -47,7 +47,9 @@ moveing_fish = pygame.sprite.Group()
 moveing_bubble = pygame.sprite.Group()
 
 #Defineing all my objects in a loop.
-#Got the idea from Cade 
+#Got the idea from Cade
+
+#fish loop
 for j in range(10):
     tempFish = Fish(RED, 80,60, random.randint(50,100))
     tempFish.rect.x = random.randint(100,700)
@@ -55,6 +57,7 @@ for j in range(10):
     moveing_fish.add(tempFish)
     all_sprites_list.add(tempFish)
 
+#bubble loop
 for i in range(15):
     tempBubble = Bubble(BUBBLE, random.randint(10,50), random.randint(10,50))
     tempBubble.rect.x = random.randint(0,700)
@@ -79,13 +82,14 @@ while carryOn:
 
     # --- Main logic
     all_sprites_list.update()
-    for Bubble in moveing_bubble:
+    for Bubble in moveing_bubble:#goes through my list of bubbles and moves them
         Bubble.Float(bspeed)
-        #Bubble.Fade(radius)
-        if Bubble.rect.y < (0 - Bubble.rect.height):
+        if Bubble.rect.y < (0 - Bubble.rect.height): 
             Bubble.rect.y = 700
-            Bubble.rect.x = random.randint(0,780)   
-    for Fish in moveing_fish:#goes through my list of objects and moves them
+            Bubble.rect.x = random.randint(0,780)
+            Bubble.radius = random.randint(10,50)
+            #bspeed = random.randint(10,50)
+    for Fish in moveing_fish:#goes through my list of fish and moves them
         Fish.moveRight(speed)
         if Fish.rect.x > SCREENWIDTH: #flips the sprite when it reachs the end of the screen. 
             Fish.speed *= -1          #ran into a bug because I did the same flip on both sides.
